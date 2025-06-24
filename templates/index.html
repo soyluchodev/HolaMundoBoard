@@ -1,0 +1,39 @@
+﻿
+{% extends "base.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+
+<h1>Dejá tu mensaje</h1>
+
+    <!-- Formulario que envía los datos al backend con método POST -->
+    <form method="POST">
+        <!-- Campo para el nombre del usuario -->
+        <div class="mb-3">
+        <input type="text" name="nombre" class="form-control" placeholder="Tu nombre" required>
+        </div>
+
+        <!-- Campo para el mensaje del usuario -->
+        <div class="mb-3">
+        <textarea name="mensaje" class="form-control" placeholder="Tu mensaje" rows="3" required></textarea>
+        </div>
+
+        <!-- Botón para enviar el formulario -->
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+
+    <hr>
+
+    <!-- Título para la lista de mensajes -->
+    <h2>Mensajes anteriores:</h2>
+
+    <!-- Lista de mensajes. Se repite un <li> por cada mensaje usando Jinja2 con un for y con el diseño de lista de Bootstrap-->
+<ul class="list-group">
+    {% for m in mensajes %}
+    <li class="list-group-item"><strong>{{ m.nombre }}</strong>: {{ m.mensaje }}
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}
+
